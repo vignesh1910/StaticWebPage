@@ -1,0 +1,23 @@
+:host{
+    .userinfo{
+        .userinfodata {
+            right: 15%;
+            font-size:13px;
+            top:50px;
+            position: absolute;
+            width: 35vw;
+            border: 1px solid #ff4081;
+            background-color: white;
+            color: black;
+            display:none;
+        }
+        &:hover {
+            .userinfodata {
+                display: block;
+            }
+        }
+    }
+    .margin-5px{
+        margin:5px;
+    }
+}

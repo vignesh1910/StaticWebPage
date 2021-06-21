@@ -1,0 +1,43 @@
+<mat-toolbar color="accent">
+    <mat-toolbar-row>
+        <div fxLayout="row" fxFlex="100">
+            <div fxFlex="83" fxLayout="row">
+                <div fxFlex="10" fxLayoutAlign="center center">
+                    <a mat-button [routerLink]="''" fxLayout="row" fxLayoutAlign="center center">
+                    <mat-icon class="fs20px">home</mat-icon>Home</a>
+                </div>
+                <div fxFlex="10" fxLayoutAlign="center center" *ngIf="commonService.isPrivateLogin">
+                    <a mat-button [routerLink]="'/gallery'">Gallery</a>
+                </div>
+                <div fxFlex="10" fxLayoutAlign="center center">
+                    <a mat-button [routerLink]="'/aboutus'">AboutUs</a>
+                </div>
+            </div>
+            <div fxFlex="17" fxLayoutAlign="center" >
+                <div fxFlex="40" >
+                    <a class="userinfo" mat-button *ngIf="commonService.isPrivateLogin">
+                        <mat-icon > perm_identity</mat-icon>
+                        <div class="userinfodata" >
+                            <div fxLayout="column" class="margin-5px">
+                                <div fxLayoutAlign="start">
+                                    <span fxFlex="20">UserName:</span>
+                                    <b >{{commonService.loginUserData?.username}}</b>
+                                </div>
+                                <div fxLayoutAlign="start">
+                                    <span fxFlex="20">UserID:</span>
+                                    <b >{{commonService.loginUserData?.userid}}</b>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div *ngIf="!commonService.isPrivateLogin">
+                    <a mat-button (click)="authMethod(true);">Login</a>
+                </div>
+                <div *ngIf="commonService.isPrivateLogin">
+                    <a mat-button [routerLink]="''" (click)="authMethod(false);">Logout</a>
+                </div>
+            </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

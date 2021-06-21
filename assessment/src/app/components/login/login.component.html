@@ -1,0 +1,26 @@
+<div>
+    <div>
+        <h3 fxFlex="100" fxLayoutAlign="center center">SignIn </h3>
+    </div>
+    <form [formGroup]="loginForm" fxLayout="column" style="padding:18px;border:1px solid grey; box-shadow: 0px 0px 0px 1px red" (ngSubmit)="false">
+        <div fxLayoutAlign="start center">
+            <span fxFlex="25">UserID</span>
+            <mat-form-field fxFlex="70">
+                <input matInput type="text" formControlName="userid">
+                <mat-error *ngIf="hasError('userid', 'required') && (loginForm.touched || loginForm.dirty)">* User ID is Required</mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayoutAlign="start center">
+            <span fxFlex="25">Password</span>
+            <mat-form-field fxFlex="70">
+                <input matInput type="{{ showVisibility ? 'text' : 'password'}}" formControlName="password">
+                <mat-icon matSuffix (click)="showVisibility = !showVisibility">{{showVisibility ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-error *ngIf="hasError('password', 'required') && (loginForm.touched || loginForm.dirty)">* Password is Required</mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayoutGap="5px" fxLayoutAlign="center center" style="margin-top:10px;">
+            <button  mat-raised-button (click)="close();">Close</button>
+            <button type="submit" color="warn" mat-raised-button (click)="login(loginForm)">SignIn</button>
+        </div>
+    </form>
+</div>
